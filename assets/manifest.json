@@ -1,0 +1,7 @@
+{
+  "name": "CWLeaderboards",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/100Daisy/ContentWarningLeaderboards",
+  "description": "Unofficial leaderboards",
+  "dependencies": ["BepInEx-BepInExPack-5.4.2100"]
+}
