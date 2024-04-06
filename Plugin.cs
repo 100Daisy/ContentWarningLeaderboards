@@ -3,15 +3,16 @@ using System.Threading;
 using BepInEx;
 using HarmonyLib;
 using System;
-using System.IO;
-using Sirenix.Serialization;
 
 namespace MyFirstPlugin;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 public class Plugin : BaseUnityPlugin
 {
+    
     public class Stats {
+        public string userName;
+        public string steamID;
         public float score;
         public string views;
     }
@@ -72,6 +73,8 @@ internal class UploadVideoStationPatch
         // Add any additional properties or data to the stats object as needed
         var stats = new Stats
         {
+            userName = Steamworks.SteamFriends.GetPersonaName(),
+            steamID = Steamworks.SteamUser.GetSteamID().ToString(),
             score = __state,
             views = BigNumbers.ViewsToString(BigNumbers.GetScoreToViews(__state, GameAPI.CurrentDay))
         };
@@ -79,7 +82,7 @@ internal class UploadVideoStationPatch
         // Serialize stats object to JSON
         var json = UnityEngine.JsonUtility.ToJson(stats);
 
-        Plugin.SendData(json);
+        SendData(json);
     }
 }
 

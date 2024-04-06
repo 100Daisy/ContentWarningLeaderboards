@@ -36,6 +36,9 @@
       <Reference Include="Sirenix.Serialization">
               <HintPath>lib\Sirenix.Serialization.dll</HintPath>
       </Reference>
+      <Reference Include="Steamworks">
+              <HintPath>lib\com.rlabrecque.steamworks.net.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
     <!-- Pack for Thunderstore -->
